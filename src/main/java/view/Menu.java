@@ -1,6 +1,7 @@
 package view;
 
 
+import controller.CuratorBookController;
 import model.CuratorBook;
 import service.LocalService;
 
@@ -17,11 +18,11 @@ public class Menu implements ILanguage, IComandMenu {
         System.out.println(localService.getString(phrase));
     }
     public static void printCuratorBook() {
+        print(ALL_STUDENTS);
         for (int i = 0; i < curatorBook.getCuratorBook().length; i++) {
             if (curatorBook.getCuratorBook()[i]!=null)
                 System.out.println(curatorBook.getCuratorBook()[i]);
         }
-
     }
 
     public void showLangMenu(){
@@ -36,4 +37,10 @@ public class Menu implements ILanguage, IComandMenu {
     }
 
 
+    public static void addNote() {
+        printMenu(ENTER_STUDENT_LASTNAME);
+        CuratorBookController.addLastName();
+        printMenu(ENTER_STUDENT_FIRSTNAME);
+
+    }
 }

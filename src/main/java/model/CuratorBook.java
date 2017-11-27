@@ -8,10 +8,6 @@ public class CuratorBook {
         return curatorBook;
     }
 
-    public void setCuratorBook(Note[] curatorBook) {
-        this.curatorBook = curatorBook;
-    }
-
     public void addNote(){
         Note note0 = new Note("Sidorov", "Petia","01-01-2000",
                 "067484853","frunze");
