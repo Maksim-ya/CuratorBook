@@ -7,7 +7,7 @@ import service.LocalService;
 
 public class Menu implements ILanguage, IComandMenu {
 
-   private static CuratorBook curatorBook=new CuratorBook();
+    private static CuratorBook curatorBook=new CuratorBook();
    private  static LocalService localService=  new LocalService();
 
     public static void print(String phrase) {
@@ -37,10 +37,10 @@ public class Menu implements ILanguage, IComandMenu {
     }
 
 
-    public static void addNote() {
-        printMenu(ENTER_STUDENT_LASTNAME);
-        CuratorBookController.addLastName();
-        printMenu(ENTER_STUDENT_FIRSTNAME);
-
-    }
+//    public static void addNote() {
+//        printMenu(ENTER_STUDENT_LASTNAME);
+//        curatorBookController.addLastName();
+//        printMenu(ENTER_STUDENT_FIRSTNAME);
+//
+//    }
 }
