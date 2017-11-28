@@ -55,10 +55,10 @@ public class CuratorBookController {
 //        String lastName = addLastName();
 //        String firstName = addFirstName();
 //        String birthDay = addBirthDay();
-//        String address = addAddress();
-        String phoneNumber = addPhoneNumber();
+        String address = addAddress();
+ //       String phoneNumber = addPhoneNumber();
 
-        System.out.println(phoneNumber);
+        System.out.println(address);
 
 
 
