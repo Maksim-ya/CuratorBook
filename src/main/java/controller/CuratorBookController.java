@@ -2,6 +2,7 @@ package controller;
 
 
 import model.CuratorBook;
+import model.Note;
 import service.LocalService;
 import view.Menu;
 
@@ -9,29 +10,30 @@ import java.util.Scanner;
 
 public class CuratorBookController {
     private Menu menu = new Menu();
-    private static Scanner in = new Scanner(System.in);
+    private Scanner in = new Scanner(System.in);
     private LocalService localService = new LocalService();
     private CuratorBook curatorBook = new CuratorBook();
+    private boolean b;
 
 
     public void run() {
-
         localService.changeLocal(chooseLanguage(menu, in));
-        curatorBook.addNote();
-        chooseAction();
-
+        while (b=true) {
+            chooseAction();
+        }
     }
 
     public String chooseLanguage(Menu menu, Scanner in) {
         menu.showLangMenu();
-        String language = in.nextLine();
+        String language = in.next();
+        in.nextLine();
         return language;
 
     }
 
     public void chooseAction() {
         menu.showMainMenu();
-        Byte choise = in.nextByte();
+        int choise = in.nextInt();
         switch (choise) {
             default:
                 Menu.printMenu(menu.WRONG_ENTER);
@@ -45,23 +47,23 @@ public class CuratorBookController {
             case 3:
                 System.exit(1);
                 break;
-//            case 4:
-//                chooseLanguage(menu,in);
-//                break;
+            case 4:
+                b=false;
+                run();
+
         }
     }
 
     private void addNote() {
-//        String lastName = addLastName();
-//        String firstName = addFirstName();
-//        String birthDay = addBirthDay();
+        String lastName = addLastName();
+        String firstName = addFirstName();
+        String birthDay = addBirthDay();
         String address = addAddress();
- //       String phoneNumber = addPhoneNumber();
-
-        System.out.println(address);
-
-
-
+        String phoneNumber = addPhoneNumber();
+        Note note = new Note(lastName, firstName, birthDay,
+                address, phoneNumber);
+        curatorBook.addNewNote(note);
+        System.out.println("You successfully added new student in book.");
     }
 
     private String addPhoneNumber() {
@@ -73,7 +75,6 @@ public class CuratorBookController {
             if (!phoneNumber.matches(localService.getString(menu.PHONENUMBER_PATTERN))) {
                 Menu.printMenu(menu.WRONG_ENTER);
             } else
-
                 break;
         }
         return phoneNumber;
@@ -88,7 +89,6 @@ public class CuratorBookController {
             if (!address.matches(localService.getString(menu.ADDRESS_PATTERN))) {
                 Menu.printMenu(menu.WRONG_ENTER);
             } else
-
                 break;
         }
         return address;
@@ -103,14 +103,13 @@ public class CuratorBookController {
             if (!birthDay.matches(localService.getString(menu.BIRTHDAY_PATTERN))) {
                 Menu.printMenu(menu.WRONG_ENTER);
             } else
-
                 break;
         }
         return birthDay;
     }
 
     private String addFirstName() {
-        String firstName ;
+        String firstName;
         while (true) {
             Menu.printMenu(menu.ENTER_STUDENT_FIRSTNAME);
             firstName = in.next();
@@ -118,14 +117,13 @@ public class CuratorBookController {
             if (!firstName.matches(localService.getString(menu.FIRSTNAME_PATTERN))) {
                 Menu.printMenu(menu.WRONG_ENTER);
             } else
-
                 break;
         }
         return firstName;
     }
 
     public String addLastName() {
-        String lastName ;
+        String lastName;
         while (true) {
             Menu.printMenu(menu.ENTER_STUDENT_LASTNAME);
             lastName = in.next();
@@ -133,7 +131,6 @@ public class CuratorBookController {
             if (!lastName.matches(localService.getString(menu.LASTNAME_PATTERN))) {
                 Menu.printMenu(menu.WRONG_ENTER);
             } else
-
                 break;
         }
         return lastName;

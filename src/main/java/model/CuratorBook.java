@@ -7,14 +7,10 @@ public class CuratorBook {
     public Note[] getCuratorBook() {
         return curatorBook;
     }
+    int cursor=-1;
 
-    public void addNote(){
-        Note note0 = new Note("Sidorov", "Petia","01-01-2000",
-                "067484853","frunze");
-        Note note1 = new Note("Зсдвсві", "Глвмтів","01-01-2000",
-                "067484853","frunze");
-        curatorBook[1]=note1;
-        curatorBook[0]=note0;
+    public void addNewNote(Note note){
+        curatorBook[++cursor]=note;
     }
 
 
